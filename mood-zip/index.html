@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111111" />
+    <meta name="description" content="하루를 한 줄로 압축하는 마이크로 저널" />
+    <title>MOOD ZIP — 오늘을 압축해요</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Gowun+Dodum&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="MOOD ZIP 홈">MOOD<span>ZIP</span><i></i></a>
+        <div class="streak-pill"><span id="streak">0</span> DAY STREAK</div>
+      </header>
+
+      <section id="top" class="hero">
+        <p class="eyebrow" id="date-label">TODAY</p>
+        <h1>오늘을<br /><em>한 줄로</em> 남겨요.</h1>
+        <p class="hero-copy">완벽한 기록 말고, 지금의 온도만.<br />3초면 오늘이 저장돼요.</p>
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+      </section>
+
+      <section class="entry-card" aria-labelledby="entry-title">
+        <div class="card-head">
+          <h2 id="entry-title">지금 기분은 어떤가요?</h2>
+          <span class="step-label">01 / 03</span>
+        </div>
+        <div class="mood-grid" id="mood-grid">
+          <button class="mood selected" data-mood="spark" data-label="짜릿해">✦<span>짜릿해</span></button>
+          <button class="mood" data-mood="sun" data-label="좋아">☀<span>좋아</span></button>
+          <button class="mood" data-mood="cloud" data-label="그저 그래">☁<span>그저 그래</span></button>
+          <button class="mood" data-mood="rain" data-label="조금 지쳐">☂<span>지쳐</span></button>
+          <button class="mood" data-mood="fire" data-label="불타는 중">♨<span>불타는 중</span></button>
+        </div>
+
+        <div class="energy-row">
+          <div><span class="mini-label">ENERGY</span><strong id="energy-value">72%</strong></div>
+          <input id="energy" type="range" min="0" max="100" value="72" aria-label="에너지 정도" />
+        </div>
+
+        <label class="thought-box" for="thought">
+          <span class="mini-label">TODAY IN ONE LINE</span>
+          <textarea id="thought" maxlength="80" placeholder="예: 퇴근길 바람이 생각보다 좋았다."></textarea>
+          <small><span id="char-count">0</span> / 80</small>
+        </label>
+        <button class="save-button" id="save-button">오늘을 ZIP하기 <span>→</span></button>
+      </section>
+
+      <section class="recap-section" aria-labelledby="recap-title">
+        <div class="section-title"><div><p class="eyebrow">YOUR WEEK</p><h2 id="recap-title">이번 주의 온도</h2></div><button class="text-button" id="share-button">공유하기 ↗</button></div>
+        <div class="recap-card" id="recap-card">
+          <div class="recap-top"><span class="recap-icon" id="recap-icon">✦</span><p id="recap-summary">첫 기록을 남겨<br />나만의 주간 리캡을 만들어요.</p></div>
+          <div class="week-bars" id="week-bars" aria-label="최근 7일 에너지"></div>
+          <div class="recap-foot"><span id="week-caption">아직 기록이 없어요</span><strong id="week-score">—</strong></div>
+        </div>
+      </section>
+
+      <section class="history-section" aria-labelledby="history-title">
+        <div class="section-title"><div><p class="eyebrow">TIME CAPSULE</p><h2 id="history-title">최근 ZIP</h2></div><button class="text-button" id="clear-button">전체 지우기</button></div>
+        <div id="history" class="history-list"><div class="empty-state">오늘의 한 줄이 여기에 쌓여요.<br />나중의 내가 가장 좋아할 기록이에요.</div></div>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
